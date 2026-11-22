@@ -8,6 +8,32 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeReceiptButtons = document.querySelectorAll("#closeReceipt");
     const confirmReceiptButton = document.querySelector("#receiptConfirm");
     const cancelReceiptButton = document.querySelector("#receiptCancel");
+    const orderTypeSelect = document.querySelector("#orderType");
+    const deliveryAddressField = document.querySelector("#deliveryAddressField");
+    const deliveryAddressInput = document.querySelector("#deliveryAddress");
+
+    const updateDeliveryAddress = () => {
+        const isDelivery = orderTypeSelect?.value === "delivery";
+        if (deliveryAddressField) deliveryAddressField.hidden = !isDelivery;
+        if (deliveryAddressInput) {
+            deliveryAddressInput.disabled = !isDelivery;
+            deliveryAddressInput.required = isDelivery;
+        }
+    };
+
+    const escapeHtml = (value) => value.replace(/[&<>"']/g, (character) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+    })[character]);
+
+    if (orderTypeSelect) {
+        orderTypeSelect.addEventListener("change", updateDeliveryAddress);
+        updateDeliveryAddress();
+    }
+    if (form) form.addEventListener("reset", () => requestAnimationFrame(updateDeliveryAddress));
 
     const pizzaPrices = {
         Margherita: 20,
@@ -78,10 +104,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 return `<div class="receipt-line"><span>${pizza.value} x${quantity}</span><strong>RM${subtotal}</strong></div>`;
             }).join("");
             const orderType = document.querySelector("#orderType")?.selectedOptions[0]?.textContent || "";
+            const deliveryAddress = escapeHtml(deliveryAddressInput?.value.trim() || "");
             receiptDetails.innerHTML = `${receiptLines}
                 <div class="receipt-line"><span>Date</span><strong>${selectedDate}</strong></div>
                 <div class="receipt-line"><span>Time</span><strong>${selectedTime}</strong></div>
                 <div class="receipt-line"><span>Order type</span><strong>${orderType}</strong></div>
+                ${orderTypeSelect?.value === "delivery" ? `<div class="receipt-line"><span>Delivery address</span><strong>${deliveryAddress}</strong></div>` : ""}
                 <div class="receipt-line receipt-total"><span>Total</span><strong>RM${total}</strong></div>`;
             receiptModal.hidden = false;
         });
