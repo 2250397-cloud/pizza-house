@@ -1,0 +1,30 @@
+PIZZA HOUSE - MENU
+
+Margherita - RM20
+Tomato sauce, mozzarella, and basil.
+
+Pepperoni - RM25
+Mozzarella and pepperoni.
+
+Garden Veggie - RM23
+Fresh vegetables and mozzarella.
+
+Chicken BBQ - Price on request
+Smoky BBQ sauce, chicken, and mozzarella.
+
+Chicken Mushroom - Price on request
+Chicken, mushrooms, and mozzarella.
+
+Spicy Tuna - Price on request
+Seasoned tuna, spicy sauce, and mozzarella.
+
+Seafood - Price on request
+Seafood toppings, tomato sauce, and mozzarella.
+
+Beef Blackpepper - Price on request
+Seasoned beef, black pepper sauce, and mozzarella.
+
+Wagyu - Price on request
+Premium wagyu beef, signature sauce, and mozzarella.
+
+To place an order, visit our Contact page.

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza House Menu</title>
+    <style>
+        @page { size: A4; margin: 18mm; }
+        body { color: #30251f; font: 12pt Arial, sans-serif; }
+        header { text-align: center; border-bottom: 3px solid #386641; margin-bottom: 24px; padding-bottom: 12px; }
+        h1 { color: #386641; margin: 0 0 5px; font-size: 28pt; }
+        header p { margin: 0; color: #725b48; }
+        table { width: 100%; border-collapse: collapse; }
+        th { background: #386641; color: white; text-align: left; }
+        th, td { padding: 11px 12px; border: 1px solid #d8c5ad; }
+        tr:nth-child(even) { background: #fbf5eb; }
+        td:last-child, th:last-child { text-align: right; white-space: nowrap; }
+        footer { margin-top: 24px; text-align: center; color: #725b48; font-size: 10pt; }
+    </style>
+</head>
+<body>
+    <header><h1>Pizza House</h1><p>Fresh pizza. Good times.</p></header>
+    <main>
+        <h2>Our Menu</h2>
+        <table>
+            <thead><tr><th>Pizza</th><th>Description</th><th>Price</th></tr></thead>
+            <tbody>
+                <tr><td>Margherita</td><td>Tomato sauce, mozzarella, and basil</td><td>RM20</td></tr>
+                <tr><td>Pepperoni</td><td>Mozzarella and pepperoni</td><td>RM25</td></tr>
+                <tr><td>Garden Veggie</td><td>Fresh vegetables and mozzarella</td><td>RM23</td></tr>
+                <tr><td>Chicken BBQ</td><td>Smoky BBQ sauce, chicken, and mozzarella</td><td>RM25</td></tr>
+                <tr><td>Chicken Mushroom</td><td>Chicken, mushrooms, and mozzarella</td><td>RM25</td></tr>
+                <tr><td>Spicy Tuna</td><td>Seasoned tuna, spicy sauce, and mozzarella</td><td>RM23</td></tr>
+                <tr><td>Seafood</td><td>Seafood toppings, tomato sauce, and mozzarella</td><td>RM28</td></tr>
+                <tr><td>Beef Blackpepper</td><td>Seasoned beef, black pepper sauce, and mozzarella</td><td>RM30</td></tr>
+                <tr><td>Wagyu</td><td>Premium wagyu beef, signature sauce, and mozzarella</td><td>RM50</td></tr>
+            </tbody>
+        </table>
+    </main>
+    <footer>Pizza House | Freshly baked with care</footer>
+</body>
+</html>

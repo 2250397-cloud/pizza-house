@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Pizza House</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header id="top">
+        <nav aria-label="Main navigation">
+            <a class="brand-logo-link" href="index.html" aria-label="Pizza House home">
+                <img class="brand-logo" src="logo.png" alt="Pizza House">
+                <span class="brand-name">Pizza <span class="brand-house">House</span></span>
+            </a>
+            <div class="links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="menu.html">Our menu</a>
+                <a class="nav-order" href="contact.html" aria-current="page">Order online <span aria-hidden="true">&#8599;</span></a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <p>QUESTIONS OR CRAVINGS?</p>
+            <h1>Get In <span>Touch</span></h1>
+        </section>
+
+        <section class="section">
+            <h2>Place an Order</h2>
+            <form id="contactForm" action="process_order.php" method="post">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" autocomplete="name" required placeholder="Your name">
+
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" required placeholder="Your email">
+
+                <label for="phone">Phone number</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" required placeholder="Your phone number">
+
+                <label for="date">Order date</label>
+                <input id="date" name="orderDate" type="date" required>
+
+                <label for="time">Preferred time</label>
+                <div class="time-picker-control">
+                    <input id="time" name="orderTime" type="time" lang="en-US" required>
+                </div>
+
+                <label for="password">Order reference password</label>
+                <input id="password" name="orderPassword" type="password" minlength="4" required placeholder="At least 4 characters">
+
+                <label for="pizza">Choose a pizza</label>
+                <fieldset class="pizza-options" id="pizzaOptions" aria-describedby="pizzaHelp">
+                    <legend class="sr-only">Pizza choices and quantities</legend>
+                    <label class="pizza-option"><input type="checkbox" name="pizzas[]" value="Margherita"> <span>Margherita</span><input class="pizza-quantity" name="quantities[Margherita]" type="number" min="1" max="20" value="1" disabled aria-label="Margherita quantity"></label>
+                    <label class="pizza-option"><input type="checkbox" name="pizzas[]" value="Pepperoni"> <span>Pepperoni</span><input class="pizza-quantity" name="quantities[Pepperoni]" type="number" min="1" max="20" value="1" disabled aria-label="Pepperoni quantity"></label>
+                    <label class="pizza-option"><input type="checkbox" name="pizzas[]" value="Garden Veggie"> <span>Garden Veggie</span><input class="pizza-quantity" name="quantities[Garden Veggie]" type="number" min="1" max="20" value="1" disabled aria-label="Garden Veggie quantity"></label>
+                    <label class="pizza-option"><input type="checkbox" name="pizzas[]" value="Chicken BBQ"> <span>Chicken BBQ</span><input class="pizza-quantity" name="quantities[Chicken BBQ]" type="number" min="1" max="20" value="1" disabled aria-label="Chicken BBQ quantity"></label>
+                    <label class="pizza-option"><input type="checkbox" name="pizzas[]" value="Chicken Mushroom"> <span>Chicken Mushroom</span><input class="pizza-quantity" name="quantities[Chicken Mushroom]" type="number" min="1" max="20" value="1" disabled aria-label="Chicken Mushroom quantity"></label>
+                    <label class="pizza-option"><input type="checkbox" name="pizzas[]" value="Spicy Tuna"> <span>Spicy Tuna</span><input class="pizza-quantity" name="quantities[Spicy Tuna]" type="number" min="1" max="20" value="1" disabled aria-label="Spicy Tuna quantity"></label>
+                    <label class="pizza-option"><input type="checkbox" name="pizzas[]" value="Seafood"> <span>Seafood</span><input class="pizza-quantity" name="quantities[Seafood]" type="number" min="1" max="20" value="1" disabled aria-label="Seafood quantity"></label>
+                    <label class="pizza-option"><input type="checkbox" name="pizzas[]" value="Beef Blackpepper"> <span>Beef Blackpepper</span><input class="pizza-quantity" name="quantities[Beef Blackpepper]" type="number" min="1" max="20" value="1" disabled aria-label="Beef Blackpepper quantity"></label>
+                    <label class="pizza-option"><input type="checkbox" name="pizzas[]" value="Wagyu"> <span>Wagyu</span><input class="pizza-quantity" name="quantities[Wagyu]" type="number" min="1" max="20" value="1" disabled aria-label="Wagyu quantity"></label>
+                </fieldset>
+                <small id="pizzaHelp" class="field-help">Tick one or more pizzas, then set the quantity for each selected option.</small>
+
+                <label>Order type</label>
+                <select id="orderType" name="orderType" required>
+                    <option value="" selected disabled>Select order type</option>
+                    <option value="pickup">Pickup</option>
+                    <option value="delivery">Delivery</option>
+                </select>
+
+                <label for="message">Special requests</label>
+                <textarea id="message" name="message" placeholder="Add any notes about your order"></textarea>
+
+                <button class="button" type="submit">Submit Order Request</button>
+                <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
+            </form>
+        </section>
+
+        <div id="receiptModal" class="receipt-modal" hidden>
+            <div class="receipt-card" role="dialog" aria-modal="true" aria-labelledby="receiptTitle">
+                <button id="closeReceipt" class="receipt-close" type="button" aria-label="Close receipt">&times;</button>
+                <p class="eyebrow">PIZZA HOUSE</p>
+                <h2 id="receiptTitle">Order Receipt</h2>
+                <div id="receiptDetails" class="receipt-details"></div>
+                <div class="receipt-actions">
+                    <button id="receiptCancel" class="button button-secondary" type="button">Cancel Order</button>
+                    <button id="receiptConfirm" class="button" type="button">Confirm Order</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <a class="footer-logo" href="index.html" aria-label="Pizza House home"><img src="logo.png" alt="Pizza House"></a>
+            <p class="footer-intro">For general enquiries, menu questions, or order requests</p>
+            <nav class="footer-links" aria-label="Footer navigation">
+                <a href="menu.html">Explore our menu</a>
+                <a href="contact.html#contactForm">Send an order request</a>
+                <a href="about.html">About Pizza House</a>
+            </nav>
+            <div class="footer-contact-details">
+                <a href="https://www.google.com/maps/place/National+Defence+University+of+Malaysia/@3.0527284,101.7234116,17z/data=!3m1!4b1!4m6!3m5!1s0x31cc357ad56c0001:0x3d5c81a579c4ae1d!8m2!3d3.0527284!4d101.7234116!16s%2Fm%2F047q4g_?entry=ttu&g_ep=EgoyMDI2MTExOC4xIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">View our location</a>
+                <div class="contact-numbers">
+                    <a href="tel:+60123456789">Contact 1: +60 12-345 6789</a>
+                    <a href="tel:+60198765432">Contact 2: +60 19-876 5432</a>
+                    <a href="tel:+60112223344">Contact 3: +60 11-222 3344</a>
+                </div>
+            </div>
+            <p class="footer-copyright">&copy; 2026 Pizza House | Freshly baked with care</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
